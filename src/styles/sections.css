@@ -311,6 +311,9 @@
   .stats-row {
     grid-template-columns: repeat(4, 1fr);
   }
+  .step-title {
+    font-size: 1.5rem;
+  }
 }
 
 .stat-number {

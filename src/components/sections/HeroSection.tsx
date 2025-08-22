@@ -13,11 +13,8 @@ const HeroSection: React.FC = () => {
               在每個美好時刻留下 Spotlike !
             </p>
             <div className="hero-cta">
-              {/* <button className="cta-button secondary">
-                立即下載
-              </button> */}
               <div className="download-badges">
-                <a href="#" className="badge-link">
+                <a href="https://apps.apple.com/app/spotlike/id6749443094" className="badge-link">
                   <img src="/App_Store_Badge.svg" alt="Download on App Store" />
                 </a>
               </div>

@@ -21,13 +21,13 @@ const HowItWorksSection: React.FC = () => {
     },
     {
       number: 3,
-      title: '分享城市探索故事', 
-      description: '與其他用戶分享你的通勤發現與城市體驗'
+      title: '分享你的故事', 
+      description: '避免錯過任何一個美好邂逅'
     },
     {
       number: 4,
-      title: '與同路人互動交流',
-      description: '遇見有相同路線的夥伴，建立有趣的連結'
+      title: '與夥伴互動交流',
+      description: '遇見相同路線的夥伴，建立有趣的連結'
     }
   ];
 
