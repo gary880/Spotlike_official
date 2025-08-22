@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 interface Screenshot {
   id: string;
@@ -9,6 +9,8 @@ interface Screenshot {
 
 const ScreenshotsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const screenshots: Screenshot[] = [
     {
@@ -49,6 +51,28 @@ const ScreenshotsSection: React.FC = () => {
     setCurrentIndex(index);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    const swipeThreshold = 50;
+    const swipeDistance = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  };
+
   return (
     <section className="screenshots-section" id="features">
       <div className="container">
@@ -63,7 +87,11 @@ const ScreenshotsSection: React.FC = () => {
               ←
             </button>
             
-            <div className="screenshots-display">
+            <div 
+              className="screenshots-display"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="main-screenshot">
                 <img 
                   src={screenshots[currentIndex].image} 
